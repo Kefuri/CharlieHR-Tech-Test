@@ -33,5 +33,12 @@ describe User do
       allow(Date).to receive(:today).and_return(date_today)
       expect(user.next_birthday.year).to eq(2021)
     end
+    it "should return a date with next year if birth months match and date has passed" do
+      birthdate = Date.new(1999, 10, 10)
+      date_today = Date.new(2020, 10, 19)
+      user = User.new("Test 1", birthdate)
+      allow(Date).to receive(:today).and_return(date_today)
+      expect(user.next_birthday.year).to eq(2021)
+    end
   end
 end
