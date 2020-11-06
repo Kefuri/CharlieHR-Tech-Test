@@ -17,7 +17,7 @@ describe User do
       expect(user.next_birthday.year).to eq(date_today.year)
     end
 
-    it "should return a date with user's birth day and month and current year" do
+    it "should return a date with user's birth day, month and current year" do
       birthdate = Date.new(1986, 12, 12)
       date_today = Date.new(2020, 11, 6)
       user = User.new("Test 1", birthdate)
@@ -33,12 +33,20 @@ describe User do
       allow(Date).to receive(:today).and_return(date_today)
       expect(user.next_birthday.year).to eq(2021)
     end
-    it "should return a date with next year if birth months match and date has passed" do
+    it "should return a date w/ next year if months match & date has passed" do
       birthdate = Date.new(1999, 10, 10)
       date_today = Date.new(2020, 10, 19)
       user = User.new("Test 1", birthdate)
       allow(Date).to receive(:today).and_return(date_today)
       expect(user.next_birthday.year).to eq(2021)
+    end
+  end
+
+  context '#age' do
+    it "should return an integer" do
+      birthdate = Date.new(1999, 10, 10)
+      user = User.new("Test 1", birthdate)
+      expect(user.age).to be_an(Integer)
     end
   end
 end
