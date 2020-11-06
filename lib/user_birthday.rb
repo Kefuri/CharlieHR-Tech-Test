@@ -14,6 +14,7 @@ class User
   end
 
   def next_birthday
+    return Date.new()
 
   end
 end
