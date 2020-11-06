@@ -15,14 +15,12 @@ class User
 
   def next_birthday
     year = Date.today.year
-    birthdate = @date_of_birth
-    if birthdate.month < Date.today.month
+    birthdate = Date.new(year, @date_of_birth.month, @date_of_birth.day)
+    if Date.today < birthdate
+      return birthdate
+    elsif Date.today >= birthdate
       year += 1
-    elsif birthdate.month == Date.today.month
-      if birthdate.day < Date.today.day
-        year += 1
-      end
+      return Date.new(year, @date_of_birth.month, @date_of_birth.day)
     end
-    return Date.new(year, birthdate.month, birthdate.day)
   end
 end
