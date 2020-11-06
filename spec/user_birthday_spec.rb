@@ -10,11 +10,20 @@ describe User do
     end
 
     it 'should return a date with the current year' do
-      birthdate = Date.new(1986, 10, 10)
+      birthdate = Date.new(1986, 12, 12)
       date_today = Date.new(2020, 11, 6)
       user = User.new("Test 1", birthdate)
       allow(Date).to receive(:today).and_return(date_today)
       expect(user.next_birthday.year).to eq(date_today.year)
+    end
+
+    it "should return a date with user's birth day and month and current year" do
+      birthdate = Date.new(1986, 12, 12)
+      date_today = Date.new(2020, 11, 6)
+      user = User.new("Test 1", birthdate)
+      allow(Date).to receive(:today).and_return(date_today)
+      expect(user.next_birthday.month).to eq(12)
+      expect(user.next_birthday.day).to eq(12)
     end
   end
 end
