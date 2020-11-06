@@ -23,8 +23,17 @@ This tech test was given a 45 minute time-limit to be completed in. It involves 
 ### Next Birthday Function
 
 - Take the date_of_birth instance variable
-- Take Date.today.year and add 1
-- Output date_of_birth with current year + 1
+- If user's birth month is before current month:
+  - Take Date.today.year and add 1
+  - Output date_of_birth with current year + 1
+- If user's birth month is current month:
+  - If user's birth day is after current day:
+    - Use current year
+  - If user's birth day is the current day:
+    - Use next year
+  - If user's birth day is before current day:
+    - Use next year
+- If user's birth month is after current month, use current year.
 
 ## Testing
 
