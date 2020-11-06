@@ -14,7 +14,8 @@ class User
   end
 
   def next_birthday
-    return Date.today()
-
+    year = Date.today.year
+    birthdate = @date_of_birth
+    return Date.new(year, birthdate.month, birthdate.day)
   end
 end
