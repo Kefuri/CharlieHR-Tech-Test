@@ -10,8 +10,11 @@ class User
   end
 
   def age
-    return 21
-
+    today = Date.today
+    birthdate = Date.new(today.year, @date_of_birth.month, @date_of_birth.day)
+    year_difference = today.year - @date_of_birth.year
+    return year_difference - 1 if birthdate < today
+    return year_difference
   end
 
   def next_birthday
