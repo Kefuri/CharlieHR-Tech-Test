@@ -16,3 +16,4 @@ class User
   def next_birthday
 
   end
+end
