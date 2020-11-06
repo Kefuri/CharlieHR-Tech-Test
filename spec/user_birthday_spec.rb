@@ -48,5 +48,21 @@ describe User do
       user = User.new("Test 1", birthdate)
       expect(user.age).to be_an(Integer)
     end
+
+    it "should return the difference between current year and year born" do
+      birthdate = Date.new(1999, 10, 20)
+      user = User.new("Test 1", birthdate)
+      date_today = Date.new(2020, 10, 19)
+      allow(Date).to receive(:today).and_return(date_today)
+      expect(user.age).to eq(21)
+    end
+
+    it "should return a year less if the user's birthday hasn't passed yet" do
+      birthdate = Date.new(1999, 10, 10)
+      user = User.new("Test 1", birthdate)
+      date_today = Date.new(2020, 10, 19)
+      allow(Date).to receive(:today).and_return(date_today)
+      expect(user.age).to eq(20)
+    end
   end
 end
