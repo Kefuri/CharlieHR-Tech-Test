@@ -11,7 +11,7 @@ describe User do
 
     it 'should return a date with the current year' do
       birthdate = Date.new(1986, 10, 10)
-      date_today = Date.new(2020, 10, 6)
+      date_today = Date.new(2020, 11, 6)
       user = User.new("Test 1", birthdate)
       allow(Date).to receive(:today).and_return(date_today)
       expect(user.next_birthday.year).to eq(date_today.year)
