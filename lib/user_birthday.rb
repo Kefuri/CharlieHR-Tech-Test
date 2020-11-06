@@ -18,6 +18,10 @@ class User
     birthdate = @date_of_birth
     if birthdate.month < Date.today.month
       year += 1
+    elsif birthdate.month == Date.today.month
+      if birthdate.day < Date.today.day
+        year += 1
+      end
     end
     return Date.new(year, birthdate.month, birthdate.day)
   end
