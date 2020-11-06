@@ -13,7 +13,7 @@ class User
     today = Date.today
     birthdate = Date.new(today.year, @date_of_birth.month, @date_of_birth.day)
     year_difference = today.year - @date_of_birth.year
-    return year_difference - 1 if birthdate < today
+    return year_difference - 1 if birthdate > today
     return year_difference
   end
 
@@ -27,4 +27,20 @@ class User
       return Date.new(year, @date_of_birth.month, @date_of_birth.day)
     end
   end
+end
+
+tests = [
+  Date.new(1986, 1, 1),
+  Date.new(1988, Date.today.month, Date.today.day),
+  Date.new(1998, 12, 30),
+]
+
+puts "====== ages ======"
+tests.each do |date|
+  puts "#{date} => #{User.new('Test', date).age}"
+end
+
+puts "====== birthdays ======"
+tests.each do |date|
+  puts "#{date} => #{User.new('Test', date).next_birthday}"
 end
